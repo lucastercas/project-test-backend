@@ -23,5 +23,5 @@ export class ProductSaveValidator implements IProduct {
 
   @IsNotEmpty()
   @ApiProperty({ type: 'integer', required: true })
-  public quantity: number
+  public quantity: number;
 }

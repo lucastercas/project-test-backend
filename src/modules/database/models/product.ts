@@ -15,7 +15,7 @@ export class Product extends Model implements IProduct {
   @ApiProperty({ type: 'float' })
   public value: number;
 
-  @ApiProperty({type: 'integer'})
+  @ApiProperty({ type: 'integer' })
   public quantity: number;
 
   public static get tableName(): string {

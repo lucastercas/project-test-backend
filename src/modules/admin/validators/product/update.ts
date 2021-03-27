@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsNotEmpty, IsString } from 'class-validator';
-import { IProduct } from 'modules/database/interfaces/product';
+import { IProduct } from 'modules/database/interfaces/IProduct';
 
 export class ProductSaveValidator implements IProduct {
   @IsNotEmpty()
