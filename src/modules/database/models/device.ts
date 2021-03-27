@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Model } from 'objection';
 
-import { IDevice } from '../interfaces/device';
+import { IDevice } from '../interfaces/IDevice';
 import { User } from './user';
 
 export class Device extends Model implements IDevice {

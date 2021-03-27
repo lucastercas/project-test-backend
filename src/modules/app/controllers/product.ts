@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ProductService } from 'modules/admin/services/product';
 import { ProductSaveValidator } from 'modules/admin/validators/product/save';
@@ -32,5 +32,11 @@ export class ProductController {
   public async save(@Body() model: ProductSaveValidator) {
     console.log('Inserindo produto: ', model);
     return this.productService.save(model);
+  }
+
+  @Put()
+  @ApiResponse({ status: 200, type: Product })
+  public async update(@Body() model: ProductSaveValidator) {
+    return this.productService.update(model);
   }
 }

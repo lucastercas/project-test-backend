@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { IPaginationParams } from 'modules/common/interfaces/pagination';
-import { enRoles, IUser } from 'modules/database/interfaces/user';
+import { enRoles, IUser } from 'modules/database/interfaces/IUser';
 import { User } from 'modules/database/models/user';
 import { Page, Transaction } from 'objection';
 

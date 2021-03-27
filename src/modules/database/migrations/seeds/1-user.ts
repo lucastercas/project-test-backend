@@ -1,5 +1,5 @@
 import * as Knex from 'knex';
-import { enRoles, IUser } from 'modules/database/interfaces/user';
+import { enRoles, IUser } from 'modules/database/interfaces/IUser';
 
 export async function seed(knex: Knex): Promise<void> {
   const adminUser: IUser = {

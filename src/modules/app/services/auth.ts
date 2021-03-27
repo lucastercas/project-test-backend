@@ -2,7 +2,7 @@ import { BadRequestException, ForbiddenException, Injectable, NotFoundException 
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { PasswordService } from 'modules/common/services/password';
 import { enTokenType, TokenService } from 'modules/common/services/token';
-import { IDevice } from 'modules/database/interfaces/device';
+import { IDevice } from 'modules/database/interfaces/IDevice';
 import { Device } from 'modules/database/models/device';
 import uuid from 'uuid/v4';
 

@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { enRoles } from 'modules/database/interfaces/user';
+import { enRoles } from 'modules/database/interfaces/IUser';
 
 import { ICurrentUser } from '../interfaces/currentUser';
 

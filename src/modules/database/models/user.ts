@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Model } from 'objection';
 
-import { enRoles, IUser } from '../interfaces/user';
+import { enRoles, IUser } from '../interfaces/IUser';
 import { Device } from './device';
 
 export class User extends Model implements IUser {

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IProduct } from 'modules/database/interfaces/product';
+import { IProduct } from 'modules/database/interfaces/IProduct';
 import { Product } from 'modules/database/models/product';
 
 @Injectable()
@@ -17,13 +17,17 @@ export class ProductRepository {
       .where({ id });
   }
 
-  public async findById(id: number) {
+  public async findById(id: number): Promise<Product> {
     return Product.query()
       .where({ id })
       .first();
   }
 
-  public async insert(model: IProduct) {
+  public async insert(model: IProduct): Promise<Product> {
     return Product.query().insert(model);
+  }
+
+  public async update(model: IProduct): Promise<Product> {
+    return Product.query().updateAndFetchById(model.id, <Product>model);
   }
 }

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString, MaxLength, Min, MinLength } from 'class-validator';
-import { IUser } from 'modules/database/interfaces/user';
+import { IUser } from 'modules/database/interfaces/IUser';
 
 export class UpdateValidator implements IUser {
   @IsOptional()

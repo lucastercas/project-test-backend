@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import cloneDeep from 'lodash/cloneDeep';
-import { IUser } from 'modules/database/interfaces/user';
+import { IUser } from 'modules/database/interfaces/IUser';
 import { AUTH } from 'settings';
 
 import { ICurrentUser } from '../interfaces/currentUser';

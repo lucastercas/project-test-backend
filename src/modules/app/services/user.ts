@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
-import { IUser } from 'modules/database/interfaces/user';
+import { IUser } from 'modules/database/interfaces/IUser';
 import { User } from 'modules/database/models/user';
 
 import { UserRepository } from '../repositories/user';

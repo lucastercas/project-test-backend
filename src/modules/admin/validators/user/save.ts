@@ -11,7 +11,7 @@ import {
   Min,
   MinLength
 } from 'class-validator';
-import { enRoles, IUser, listPublicRoles } from 'modules/database/interfaces/user';
+import { enRoles, IUser, listPublicRoles } from 'modules/database/interfaces/IUser';
 
 export class UserSaveValidator implements IUser {
   @IsOptional()

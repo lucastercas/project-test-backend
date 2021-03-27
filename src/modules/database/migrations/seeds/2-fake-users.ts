@@ -1,6 +1,6 @@
 import * as faker from 'faker/locale/pt_BR';
 import * as Knex from 'knex';
-import { IUser } from 'modules/database/interfaces/user';
+import { IUser } from 'modules/database/interfaces/IUser';
 import { IS_DEV } from 'settings';
 
 export async function seed(knex: Knex): Promise<void> {

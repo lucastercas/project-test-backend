@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from 
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
-import { enRoles, listPublicRoles } from 'modules/database/interfaces/user';
+import { enRoles, listPublicRoles } from 'modules/database/interfaces/IUser';
 import { User } from 'modules/database/models/user';
 
 import { UserRepository } from '../repositories/user';
