@@ -13,7 +13,7 @@ import {
 } from 'class-validator';
 import { enRoles, IUser, listPublicRoles } from 'modules/database/interfaces/user';
 
-export class SaveValidator implements IUser {
+export class UserSaveValidator implements IUser {
   @IsOptional()
   @IsInt()
   @Min(0)

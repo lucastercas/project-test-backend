@@ -1,12 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ProductService } from 'modules/admin/services/product';
+import { ProductSaveValidator } from 'modules/admin/validators/product/save';
 import { Product } from 'modules/database/models/product';
 import { ProductRepository } from '../repositories/product';
 
 @ApiTags('App: Product')
 @Controller('/product')
 export class ProductController {
-  constructor(private productRepository: ProductRepository) {}
+  constructor(private productService: ProductService, private productRepository: ProductRepository) {}
 
   @Get()
   @ApiResponse({ status: 200, type: [Product] })
@@ -14,7 +16,21 @@ export class ProductController {
     return this.productRepository.list();
   }
 
-  @Get(':productid')
+  @Get(':productId')
   @ApiResponse({ status: 200, type: Product })
-  public async getProduct() {}
+  public async getProduct(@Param('productId', ParseIntPipe) userId: number) {
+    return this.productRepository.findById(userId);
+  }
+
+  @Delete(':productId')
+  public async deleteProduct(@Param('productId', ParseIntPipe) productId: number) {
+    return this.productService.remove(productId);
+  }
+
+  @Post()
+  @ApiResponse({ status: 200, type: Product })
+  public async save(@Body() model: ProductSaveValidator) {
+    console.log('Inserindo produto: ', model);
+    return this.productService.save(model);
+  }
 }

@@ -1,4 +1,5 @@
 import { HttpModule, Module } from '@nestjs/common';
+import { ProductService } from 'modules/admin/services/product';
 import { CommonModule } from 'modules/common/module';
 import { DatabaseModule } from 'modules/database/module';
 
@@ -14,6 +15,6 @@ import { UserService } from './services/user';
 @Module({
   imports: [HttpModule, CommonModule, DatabaseModule],
   controllers: [AuthController, ProfileController, ProductController],
-  providers: [AuthService, UserService, UserRepository, DeviceRepository, ProductRepository]
+  providers: [AuthService, UserService, UserRepository, DeviceRepository, ProductRepository, ProductService]
 })
 export class AppModule {}

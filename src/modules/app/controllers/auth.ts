@@ -16,7 +16,6 @@ export class AuthController {
 
   @Post('/login')
   public async login(@Body() model: LoginValidator) {
-    console.log(`hit login app`)
     return this.authService.login(model);
   }
 

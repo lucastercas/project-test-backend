@@ -16,26 +16,22 @@ export class AuthController {
 
   @Post('login')
   public async login(@Body() model: LoginValidator) {
-    console.log('hit login admin');
     return this.authService.login(model.email, model.password);
   }
 
   @Post('send-reset')
   public async sendReset(@Body() model: SendResetValidator) {
-    console.log(`hit send-reset`);
     return this.authService.sendResetPassword(model.email);
   }
 
   @Post('reset-password')
   public async resetPassword(@Body() model: ResetPasswordValidator) {
-    console.log(`hit reset-password`);
     return this.authService.resetPassword(model.token, model.password);
   }
 
   @Post('change-password')
   @AuthRequired()
   public async changePassword(@Body() model: ChangePasswordValidator, @CurrentUser() currentUser: ICurrentUser) {
-    console.log(`hit change-password`);
     return this.authService.changePassword(currentUser, model.currentPassword, model.newPassword);
   }
 }

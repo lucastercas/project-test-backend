@@ -8,7 +8,7 @@ import { User } from 'modules/database/models/user';
 import { UserRepository } from '../repositories/user';
 import { UserService } from '../services/user';
 import { ListValidator } from '../validators/user/list';
-import { SaveValidator } from '../validators/user/save';
+import { UserSaveValidator } from '../validators/user/save';
 
 @ApiTags('Admin: User')
 @Controller('/user')
@@ -19,14 +19,13 @@ export class UserController {
   @Get()
   @ApiResponse({ status: 200, type: [User] })
   public async list(@Query() model: ListValidator) {
-    console.log("Model: ", model)
+    console.log('Model: ', model);
     return this.userRepository.list(model);
   }
 
   @Get('roles')
   @ApiResponse({ status: 200, type: 'string', isArray: true })
   public async roles() {
-    console.log(`hit roles`);
     const roles = listPublicRoles();
     const rolesDescriptions: any = {
       admin: { name: 'Administrador', description: 'Acesso total a todas as funcionalidades' },
@@ -49,7 +48,7 @@ export class UserController {
 
   @Post()
   @ApiResponse({ status: 200, type: User })
-  public async save(@Body() model: SaveValidator) {
+  public async save(@Body() model: UserSaveValidator) {
     return this.userService.save(model);
   }
 }

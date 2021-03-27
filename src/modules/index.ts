@@ -8,7 +8,7 @@ import { AppModule } from './app/module';
   imports: [
     RouterModule.forRoutes([
       { path: '/admin', module: AdminModule },
-      { path: '/app', module: AppModule },
+      { path: '/app', module: AppModule }
     ]),
     AdminModule,
     AppModule
