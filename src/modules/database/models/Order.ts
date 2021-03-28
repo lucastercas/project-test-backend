@@ -1,8 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 import { Model } from 'objection';
 import { IOrder } from '../interfaces/IOrder';
 import { OrderProduct } from './OrderProduct';
-
+@Injectable()
 export class Order extends Model implements IOrder {
   public static tableName: string = 'Order';
 

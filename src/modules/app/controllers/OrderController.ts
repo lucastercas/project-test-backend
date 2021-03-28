@@ -22,7 +22,6 @@ export class OrderController {
   @Get(':orderId')
   @ApiResponse({ status: 200, type: Order })
   public async findById(@Param('orderId', ParseIntPipe) orderId: number, @CurrentUser() currentUser: ICurrentUser) {
-    console.log('Finding order ', orderId);
     return this.orderRepository.findById(orderId, currentUser);
   }
 
@@ -33,6 +32,6 @@ export class OrderController {
 
   @Post()
   public async create(@Body() model: OrderSaveValidator, @CurrentUser() currentUser: ICurrentUser) {
-    return this.orderService.save(model, currentUser);
+    return this.orderService.save(model, model.products, currentUser);
   }
 }

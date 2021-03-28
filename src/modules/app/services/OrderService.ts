@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { IOrder } from 'modules/database/interfaces/IOrder';
+import { IOrderProduct } from 'modules/database/interfaces/IOrderProduct';
 import { Order } from 'modules/database/models/Order';
 import { OrderRepository } from '../repositories/OrderRepository';
 import { ProductRepository } from '../repositories/ProductRepository';
@@ -27,7 +28,7 @@ export class OrderService {
     return this.orderRepository.remove(id);
   }
 
-  public async save(model: IOrder, currentUser: ICurrentUser): Promise<Order> {
+  public async save(model: IOrder, products: IOrderProduct[], currentUser: ICurrentUser): Promise<Order> {
     const user = await this.userRepository.findById(model.userId);
     if (!user) throw new NotFoundException(`Usuario ${model.userId} nao encontrado`);
 
@@ -36,12 +37,15 @@ export class OrderService {
     const order = await this.orderRepository.insert(model);
 
     try {
-      for (const productOrder of model.products) {
+      for (const productOrder of products) {
+        console.log('Tentanto inserir: ', productOrder);
         const product = await this.productRepository.findById(productOrder.productId);
         if (product.quantity < productOrder.quantity) {
           throw new BadRequestException(`Quantidade do produto ${productOrder.productId} invalida`);
         }
-        await order.$relatedQuery('products').insert(productOrder);
+        await order
+          .$relatedQuery('products')
+          .insert({ quantity: productOrder.quantity, productId: productOrder.productId });
       }
     } catch (e) {
       this.orderRepository.remove(order.id);
