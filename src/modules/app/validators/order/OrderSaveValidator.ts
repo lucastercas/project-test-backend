@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsNotEmpty, IsOptional } from 'class-validator';
 import { IOrder } from 'modules/database/interfaces/IOrder';
-import { IOrderProduct } from 'modules/database/interfaces/IOrderProduct';
+// import { IOrderProduct } from 'modules/database/interfaces/IOrderProduct';
+import { OrderProduct } from 'modules/database/models/OrderProduct';
 
 export class OrderSaveValidator implements IOrder {
   @IsOptional()
@@ -15,5 +16,5 @@ export class OrderSaveValidator implements IOrder {
   public userId: number;
 
   @IsNotEmpty()
-  public products: IOrderProduct[];
+  public products: OrderProduct[];
 }
