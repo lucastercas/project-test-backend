@@ -2,9 +2,9 @@ import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { PasswordService } from 'modules/common/services/password';
 import { TokenService } from 'modules/common/services/token';
 
-import { DeviceRepository } from '../repositories/device';
-import { UserRepository } from '../repositories/user';
-import { AuthService } from './auth';
+import { DeviceRepository } from '../repositories/DeviceRepository';
+import { UserRepository } from '../repositories/UserRepository';
+import { AuthService } from './AuthService';
 
 describe('App/AuthService', () => {
   let tokenService: TokenService;

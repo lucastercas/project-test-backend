@@ -3,11 +3,11 @@ import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { PasswordService } from 'modules/common/services/password';
 import { enTokenType, TokenService } from 'modules/common/services/token';
 import { IDevice } from 'modules/database/interfaces/IDevice';
-import { Device } from 'modules/database/models/device';
+import { Device } from 'modules/database/models/Device';
 import uuid from 'uuid/v4';
 
-import { DeviceRepository } from '../repositories/device';
-import { UserRepository } from '../repositories/user';
+import { DeviceRepository } from '../repositories/DeviceRepository';
+import { UserRepository } from '../repositories/UserRepository';
 import { LoginValidator } from '../validators/auth/login';
 
 @Injectable()

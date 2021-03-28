@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import { HttpService, Injectable } from '@nestjs/common';
-import { Device } from 'modules/database/models/device';
+import { Device } from 'modules/database/models/Device';
 import { FIREBASE_KEY } from 'settings';
 
 @Injectable()

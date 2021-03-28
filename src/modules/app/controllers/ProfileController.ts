@@ -2,10 +2,10 @@ import { Body, Controller, Get, NotFoundException, Post } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
-import { User } from 'modules/database/models/user';
+import { User } from 'modules/database/models/User';
 
-import { UserRepository } from '../repositories/user';
-import { UserService } from '../services/user';
+import { UserRepository } from '../repositories/UserRepository';
+import { UserService } from '../services/UserService';
 import { UpdateValidator } from '../validators/profile/update';
 
 @ApiTags('App: Profile')

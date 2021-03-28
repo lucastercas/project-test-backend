@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Model } from 'objection';
 
 import { enRoles, IUser } from '../interfaces/IUser';
-import { Device } from './device';
+import { Device } from './Device';
 
 export class User extends Model implements IUser {
   @ApiProperty({ type: 'integer' })

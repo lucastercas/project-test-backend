@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ProductService } from 'modules/admin/services/product';
-import { ProductSaveValidator } from 'modules/admin/validators/product/save';
-import { Product } from 'modules/database/models/product';
-import { ProductRepository } from '../repositories/product';
+import { ProductSaveValidator } from 'modules/app/validators/product/ProductSaveValidator';
+import { Product } from 'modules/database/models/Product';
+import { ProductRepository } from '../repositories/ProductRepository';
+import { ProductService } from '../services/ProductService';
 
 @ApiTags('App: Product')
 @Controller('/product')

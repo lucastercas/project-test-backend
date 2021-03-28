@@ -1,9 +1,9 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { IUser } from 'modules/database/interfaces/IUser';
-import { User } from 'modules/database/models/user';
+import { User } from 'modules/database/models/User';
 
-import { UserRepository } from '../repositories/user';
+import { UserRepository } from '../repositories/UserRepository';
 
 @Injectable()
 export class UserService {

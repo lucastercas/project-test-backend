@@ -17,7 +17,7 @@ export class DatabaseModule implements OnApplicationBootstrap, OnApplicationShut
     this.connection = knex(config[NODE_ENV]);
     objection.Model.knex(this.connection);
 
-    // await this.connection.migrate.down();
+    await this.connection.migrate.down();
     await this.connection.migrate.latest();
     await this.connection.seed.run();
 

@@ -5,7 +5,7 @@ import { IMail, MailService } from 'modules/common/services/mail';
 import { PasswordService } from 'modules/common/services/password';
 import { enTokenType, TokenService } from 'modules/common/services/token';
 import { UrlService } from 'modules/common/services/url';
-import { User } from 'modules/database/models/user';
+import { User } from 'modules/database/models/User';
 
 import { UserRepository } from '../repositories/user';
 

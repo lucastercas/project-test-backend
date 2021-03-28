@@ -3,7 +3,7 @@ import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { MailService } from 'modules/common/services/mail';
 import { PasswordService } from 'modules/common/services/password';
 import { enRoles, IUser, listPublicRoles } from 'modules/database/interfaces/IUser';
-import { User } from 'modules/database/models/user';
+import { User } from 'modules/database/models/User';
 
 import { UserRepository } from '../repositories/user';
 

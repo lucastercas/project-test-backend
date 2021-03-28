@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { IUser } from 'modules/database/interfaces/IUser';
-import { User } from 'modules/database/models/user';
+import { User } from 'modules/database/models/User';
 import { Transaction } from 'objection';
 
 @Injectable()

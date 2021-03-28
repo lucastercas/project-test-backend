@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Model } from 'objection';
 
 import { IDevice } from '../interfaces/IDevice';
-import { User } from './user';
+import { User } from './User';
 
 export class Device extends Model implements IDevice {
   @ApiProperty({ type: 'string' })

@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { IProduct } from 'modules/database/interfaces/IProduct';
-import { Product } from 'modules/database/models/product';
+import { Product } from 'modules/database/models/Product';
+import { Page } from 'objection';
 
 @Injectable()
 export class ProductRepository {
-  public async list() {
-    const query = Product.query()
+  public async list(): Promise<Page<Product>> {
+    return Product.query()
       .select('*')
       .page(1, 5);
-    return query;
-  }
-
-  public async remove(id: number) {
-    await Product.query()
-      .del()
-      .where({ id });
   }
 
   public async findById(id: number): Promise<Product> {
     return Product.query()
       .where({ id })
       .first();
+  }
+
+  public async remove(id: number) {
+    await Product.query()
+      .del()
+      .where({ id });
   }
 
   public async insert(model: IProduct): Promise<Product> {
