@@ -5,12 +5,12 @@ import { IProduct } from 'modules/database/interfaces/IProduct';
 import { IUser } from 'modules/database/interfaces/IUser';
 
 export async function seed(knex: Knex) {
-  const count = await knex
+  const orderProductCount = await knex
     .count()
-    .from('OrderProduct')
+    .from('Order')
     .first();
 
-  if (Number(count.count) !== 0) return;
+  if (Number(orderProductCount.count) > 0) return;
 
   const user: IUser = await knex
     .select('*')

@@ -1,11 +1,14 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { IOrder } from 'modules/database/interfaces/IOrder';
 import { Order } from 'modules/database/models/Order';
 
 @Injectable()
 export class OrderRepository {
-  public async list(): Promise<Order[]> {
-    const orders = await Order.query().select('*');
+  public async list(currentUser: ICurrentUser): Promise<Order[]> {
+    const orders = await Order.query()
+      .select('*')
+      .where({ userId: currentUser.id });
 
     await Promise.all(
       orders.map(async order => {
@@ -16,11 +19,11 @@ export class OrderRepository {
     return orders;
   }
 
-  public async findById(id: number) {
+  public async findById(id: number, currentUser: ICurrentUser) {
     const order = await Order.query()
-      .where({ id })
+      .where({ id, userId: currentUser.id })
       .first();
-    if (!order) throw new NotFoundException('not-found');
+    if (!order) throw new NotFoundException(`Order com id ${id} nao encontrada`);
 
     order.products = await order.$relatedQuery('products');
     console.log('Produtos: ', order.products);
