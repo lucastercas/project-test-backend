@@ -7,9 +7,20 @@ import { Page, Transaction } from 'objection';
 @Injectable()
 export class ProductRepository {
   public async list(params: IPaginationParams, transaction?: Transaction): Promise<Page<Product>> {
-    return Product.query(transaction)
+    let query = Product.query(transaction)
       .select('*')
       .page(params.page, params.pageSize);
+
+    if (params.orderBy) {
+      query = query.orderBy(params.orderBy, params.orderDirection);
+    }
+
+    if (params.term) {
+      query = query.where(query => {
+        return query.where('name', 'ilike', `%${params.term}%`);
+      });
+    }
+    return query;
   }
 
   public async findById(id: number): Promise<Product> {
