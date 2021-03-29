@@ -3,8 +3,8 @@ import { MailService } from 'modules/common/services/mail';
 import { PasswordService } from 'modules/common/services/password';
 import { enRoles, IUser } from 'modules/database/interfaces/IUser';
 
-import { UserRepository } from '../repositories/user';
-import { UserService } from './user';
+import { UserRepository } from '../repositories/UserRepository';
+import { UserService } from './UserService';
 
 /* eslint-disable max-len */
 describe('Admin/UserService', () => {

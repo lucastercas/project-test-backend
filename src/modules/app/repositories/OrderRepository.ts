@@ -1,17 +1,25 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
+import { IPaginationParams } from 'modules/common/interfaces/pagination';
 import { IOrder } from 'modules/database/interfaces/IOrder';
 import { Order } from 'modules/database/models/Order';
+import { Page, Transaction } from 'objection';
 
 @Injectable()
 export class OrderRepository {
-  public async list(currentUser: ICurrentUser): Promise<Order[]> {
-    const orders = await Order.query()
+  public async list(
+    params: IPaginationParams,
+    currentUser: ICurrentUser,
+    transaction?: Transaction
+  ): Promise<Page<Order>> {
+    console.log('Listing order of user ', currentUser);
+    const orders = await Order.query(transaction)
       .select('*')
-      .where({ userId: currentUser.id });
+      .where({ userId: currentUser.id })
+      .page(params.page, params.pageSize);
 
     await Promise.all(
-      orders.map(async order => {
+      orders.results.map(async order => {
         order.products = await order.$relatedQuery('products');
       })
     );

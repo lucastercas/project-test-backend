@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
       .references('id')
       .inTable('User')
       .notNullable()
-      .onDelete('CASCASE');
+      .onDelete('CASCADE');
   });
 }
 

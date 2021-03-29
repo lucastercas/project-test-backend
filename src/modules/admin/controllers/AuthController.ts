@@ -3,7 +3,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 
-import { AuthService } from '../services/auth';
+import { AuthService } from '../services/AuthService';
 import { ChangePasswordValidator } from '../validators/auth/changePassword';
 import { LoginValidator } from '../validators/auth/login';
 import { ResetPasswordValidator } from '../validators/auth/resetPassword';

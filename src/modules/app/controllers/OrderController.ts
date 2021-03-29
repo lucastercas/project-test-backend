@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthRequired, CurrentUser } from 'modules/common/guards/token';
 import { ICurrentUser } from 'modules/common/interfaces/currentUser';
+import { PaginationValidator } from 'modules/common/validators/pagination';
 import { Order } from 'modules/database/models/Order';
 import { OrderRepository } from '../repositories/OrderRepository';
 import { OrderService } from '../services/OrderService';
@@ -15,8 +16,8 @@ export class OrderController {
 
   @Get()
   @ApiResponse({ status: 200 })
-  public async list(@CurrentUser() currentUser: ICurrentUser) {
-    return this.orderService.list(currentUser);
+  public async list(@Query() query: PaginationValidator, @CurrentUser() currentUser: ICurrentUser) {
+    return this.orderRepository.list(query, currentUser);
   }
 
   @Get(':orderId')

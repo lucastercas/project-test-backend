@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ProductSaveValidator } from 'modules/app/validators/product/ProductSaveValidator';
 import { AuthRequired } from 'modules/common/guards/token';
@@ -6,6 +6,7 @@ import { enRoles } from 'modules/database/interfaces/IUser';
 import { Product } from 'modules/database/models/Product';
 import { ProductRepository } from '../repositories/ProductRepository';
 import { ProductService } from '../services/ProductService';
+import { ProductListValidator } from '../validators/product/ProductListValidator';
 
 @ApiTags('App: Product')
 @Controller('/product')
@@ -15,8 +16,8 @@ export class ProductController {
 
   @Get()
   @ApiResponse({ status: 200, type: [Product] })
-  public async list() {
-    return this.productRepository.list();
+  public async list(@Query() query: ProductListValidator) {
+    return this.productRepository.list(query);
   }
 
   @Get(':productId')

@@ -4,8 +4,8 @@ import { PasswordService } from 'modules/common/services/password';
 import { TokenService } from 'modules/common/services/token';
 import { UrlService } from 'modules/common/services/url';
 
-import { UserRepository } from '../repositories/user';
-import { AuthService } from './auth';
+import { UserRepository } from '../repositories/UserRepository';
+import { AuthService } from './AuthService';
 
 describe('Admin/AuthService', () => {
   let tokenService: TokenService;

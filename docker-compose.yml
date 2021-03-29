@@ -20,7 +20,7 @@ services:
       - POSTGRES_DB=waproject
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=123mudar
-    volumes:
-      - ./.data/postgresql:/var/lib/postgresql/data
+    # volumes:
+    #   - ./.data/postgresql:/var/lib/postgresql/data
     ports:
       - "5432:5432"

@@ -2,13 +2,13 @@ import { HttpModule, MiddlewareConsumer, Module, NestModule } from '@nestjs/comm
 import { CommonModule } from 'modules/common/module';
 import { DatabaseModule } from 'modules/database/module';
 
-import { AuthController } from './controllers/auth';
+import { AuthController } from './controllers/AuthController';
 import { TestController } from './controllers/test';
-import { UserController } from './controllers/user';
+import { UserController } from './controllers/UserController';
 import { RenewTokenMiddleware } from './middlewares/renewToken';
-import { UserRepository } from './repositories/user';
-import { AuthService } from './services/auth';
-import { UserService } from './services/user';
+import { UserRepository } from './repositories/UserRepository';
+import { AuthService } from './services/AuthService';
+import { UserService } from './services/UserService';
 
 @Module({
   imports: [HttpModule, CommonModule, DatabaseModule],

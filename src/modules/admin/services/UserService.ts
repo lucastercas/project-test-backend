@@ -5,7 +5,7 @@ import { PasswordService } from 'modules/common/services/password';
 import { enRoles, IUser, listPublicRoles } from 'modules/database/interfaces/IUser';
 import { User } from 'modules/database/models/User';
 
-import { UserRepository } from '../repositories/user';
+import { UserRepository } from '../repositories/UserRepository';
 
 @Injectable()
 export class UserService {

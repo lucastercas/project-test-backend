@@ -5,9 +5,9 @@ import { ICurrentUser } from 'modules/common/interfaces/currentUser';
 import { enRoles, listPublicRoles } from 'modules/database/interfaces/IUser';
 import { User } from 'modules/database/models/User';
 
-import { UserRepository } from '../repositories/user';
-import { UserService } from '../services/user';
-import { ListValidator } from '../validators/user/list';
+import { UserRepository } from '../repositories/UserRepository';
+import { UserService } from '../services/UserService';
+import { UserListValidator } from '../validators/user/UserListValidator';
 import { UserSaveValidator } from '../validators/user/save';
 
 @ApiTags('Admin: User')
@@ -18,8 +18,7 @@ export class UserController {
 
   @Get()
   @ApiResponse({ status: 200, type: [User] })
-  public async list(@Query() model: ListValidator) {
-    console.log('Model: ', model);
+  public async list(@Query() model: UserListValidator) {
     return this.userRepository.list(model);
   }
 

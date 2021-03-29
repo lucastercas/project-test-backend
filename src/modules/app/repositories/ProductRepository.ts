@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { IPaginationParams } from 'modules/common/interfaces/pagination';
 import { IProduct } from 'modules/database/interfaces/IProduct';
 import { Product } from 'modules/database/models/Product';
-import { Page } from 'objection';
+import { Page, Transaction } from 'objection';
 
 @Injectable()
 export class ProductRepository {
-  public async list(): Promise<Page<Product>> {
-    return Product.query()
+  public async list(params: IPaginationParams, transaction?: Transaction): Promise<Page<Product>> {
+    return Product.query(transaction)
       .select('*')
-      .page(1, 5);
+      .page(params.page, params.pageSize);
   }
 
   public async findById(id: number): Promise<Product> {

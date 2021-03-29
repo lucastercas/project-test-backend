@@ -15,10 +15,6 @@ export class OrderService {
     private productRepository: ProductRepository
   ) {}
 
-  public async list(currentUser: ICurrentUser) {
-    return this.orderRepository.list(currentUser);
-  }
-
   public async remove(id: number, currentUser: ICurrentUser) {
     const order = await this.orderRepository.findById(id, currentUser);
     if (!order) throw new NotFoundException('not-found');
