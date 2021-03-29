@@ -17,7 +17,6 @@ export class TokenGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
   public async canActivate(context: ExecutionContext) {
-    // return true; // To-Do: Mudar
     const request = context.switchToHttp().getRequest();
     const user: ICurrentUser = request.user;
 

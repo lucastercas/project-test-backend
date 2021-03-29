@@ -3,6 +3,8 @@ WaProject Api Base
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/f109c9a8c09dd5e648dd)
 
+- Na pasta `docs` tem um arquivo do Insomnia para importação, com todas as rotas da aplicação
+
 Utilize o VSCode, já está configurado com sugestão de extensões e debug.
 
 ### Tecnologias
